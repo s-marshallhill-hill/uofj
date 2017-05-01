@@ -1,0 +1,89 @@
+﻿<div class="row">
+  <div class="col-md-12">
+
+    <h2>Add a Student</h2>
+
+    <form [formGroup]="studentForm" (ngSubmit)="onSubmit()" novalidate>
+      <div class="form-group">
+        <label class="center-block">
+          First name:
+          <input class="form-control" formControlName="first" required >
+          <span *ngIf="formErrors.first" class="alert alert-danger">
+            {{ formErrors.first }}
+          </span>
+        </label>
+        <label class="center-block">
+          Last Name:
+          <input class="form-control" formControlName="last" required>
+          <span *ngIf="formErrors.last" class="alert alert-danger">
+            {{ formErrors.last }}
+          </span>
+        </label>
+        <label class="center-block">
+          Age:
+          <input class="form-control" formControlName="age" type="number" min="18" max="30">
+          <span *ngIf="formErrors.age" class="alert alert-danger">
+            {{ formErrors.age }}
+          </span>
+        </label>
+        <label class="center-block">
+          Graduation Year:
+          <input class="form-control" formControlName="gradYear" type="number" min="2010" max="2050">
+          <span *ngIf="formErrors.gradYear" class="alert alert-danger">
+            {{ formErrors.gradYear }}
+          </span>
+        </label>
+      </div>
+
+      <div class="form-group">
+        <label class="center-block">
+          Email:
+          <input class="form-control" formControlName="email" type="email">
+          <span *ngIf="formErrors.email" class="alert alert-danger">
+            {{ formErrors.email }}
+          </span>
+        </label>
+      </div>
+      <div class="form-group">
+        <label class="center-block">
+          Street Address:
+          <input class="form-control" formControlName="address">
+          <span *ngIf="formErrors.address" class="alert alert-danger">
+            {{ formErrors.address }}
+          </span>
+        </label>
+        <label class="center-block">
+          City:
+          <input class="form-control" formControlName="city">
+          <span *ngIf="formErrors.city" class="alert alert-danger">
+            {{ formErrors.city }}
+          </span>
+        </label>
+      </div>
+
+      <div class="form-group">
+        <label class="center-block">
+          State:
+          <select class="form-control" formControlName="state">
+            <option *ngFor="let state of states" [value]="state.abbreviation">{{state.name}}</option>
+          </select>
+          <span *ngIf="formErrors.state" class="alert alert-danger">
+            {{ formErrors.state }}
+          </span>
+        </label>
+        <label class="center-block">
+          Zip Code:
+          <input class="form-control" formControlName="zip">
+          <span *ngIf="formErrors.zip" class="alert alert-danger">
+            {{ formErrors.zip }}
+          </span>
+        </label>
+      </div>
+      <button type="submit"
+              [disabled]="studentForm.pristine" class="btn btn-success">
+        Save
+      </button> &nbsp;
+
+    </form>
+  </div>
+</div>

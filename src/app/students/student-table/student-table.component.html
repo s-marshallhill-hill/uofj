@@ -1,0 +1,57 @@
+﻿<div class="row ">
+  <div class="col">
+    <button type="button" class="btn btn-success" (click)="createNewStudent()">Add A Student</button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+     <button role="button" class="table-add" (click)="createNewStudent()">+</button>
+     
+    <table class="table">
+      <thead>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Zip</th>
+        <th>Age</th>
+        <th>Email</th>
+        <th>Graduation Year</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let student of students" (change)="update(student)">
+          <!--<app-student #comp [student] ="student" (change)="comp.update(student)" ></app-student>-->
+          <td>
+            <app-inline-edit [(ngModel)]="student.first" typeof="text"></app-inline-edit>
+          </td>
+          <td>
+            <app-inline-edit [(ngModel)]="student.last" typeof="text"></app-inline-edit>
+          </td>
+          <td>
+            <app-inline-edit [(ngModel)]="student.address" typeof="text"></app-inline-edit>
+          </td>
+          <td>
+            <app-inline-edit [(ngModel)]="student.city" typeof="text"></app-inline-edit>
+          </td>
+          <td>
+            <app-inline-edit [(ngModel)]="student.state" typeof="text"></app-inline-edit>
+          </td>
+          <td>
+            <app-inline-edit [(ngModel)]="student.zip" typeof="number"></app-inline-edit>
+          </td>
+          <td>
+            <app-inline-edit [(ngModel)]="student.age" typeof="number"></app-inline-edit>
+          </td>
+          <td>
+            <app-inline-edit [(ngModel)]="student.email" typeof="email"></app-inline-edit>
+          </td>
+          <td>
+            <app-inline-edit [(ngModel)]="student.gradYear" typeof="number"></app-inline-edit>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

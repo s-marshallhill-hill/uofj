@@ -9,6 +9,8 @@
     <None Remove="u-of-json-api\**" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="src\app\NewFolder1\" />
+    <Folder Include="src\app\NewFolder\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
   <ItemGroup>
