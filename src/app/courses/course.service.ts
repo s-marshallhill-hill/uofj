@@ -1,6 +1,7 @@
 ﻿import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { Response } from '@angular/http';
 import { Observable } from "rxjs/Observable";
+import { DataService } from '../shared/services/data.service';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -15,11 +16,22 @@ export interface Course {
 export class CourseService {
     private courseUrl: string = '/api/courses';
 
-    constructor(public http: Http) { }
+    constructor(private service: DataService) { }
 
     getCourses(): Observable<Course[]> {
-        return this.http.get(this.courseUrl)
-            .map((res: Response) => res.json())
-            .catch((error: any) => Observable.throw(error.json().error || "Server Error retreiving Courses"));
+        return this.service.get(this.courseUrl)
+            .map((res: Response) => res.json());
+    }
+
+    updateStudent(course: Course): Observable<Response> {
+    //updateStudent(student: Student): Observable<Student> {
+        let url = `${this.courseUrl}/update/${course.id}`;
+        return this.service.put(url, course);
+    }
+
+    createStudent(course: Course): Observable<Response> {
+       let url = `${this.courseUrl}/create`;
+
+        return this.service.post(url, course);
     }
 }

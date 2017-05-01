@@ -1,14 +1,18 @@
 ﻿<table class="table">
   <thead>
-  <th>Id</th>
-  <th>Course</th>
-  <th>Student</th>
-  <th>Graduation Year</th>
-  <th>Grade</th>
+    <th>Id</th>
+    <th>Course</th>
+    <th>Student</th>
+    <th>Graduation Year</th>
+    <th>Grade</th>
   </thead>
   <tbody>
-    <tr *ngFor="let roster of rosters">
-      <app-roster-item  [roster]="roster"></app-roster-item>
+    <tr *ngFor="let roster of ( rosters | sortBy : 'studentName')">
+      <td scope="row">{{roster.id}}</td>
+      <td scope="row">{{roster.course}}</td>
+      <td scope="row">{{roster.studentName}}</td>
+      <td scope="row">{{roster.gradYear}}</td>
+      <td scope="row">{{roster.grade}}</td>
     </tr>
   </tbody>
 </table>

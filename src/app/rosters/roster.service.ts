@@ -1,6 +1,7 @@
 ﻿import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from "rxjs/Observable";
+import { DataService } from '../shared/services/data.service';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -18,12 +19,17 @@ export class RosterService {
 
     private rosterUrl: string = '/api/rosters';
 
-    constructor(public http: Http) { }
+    constructor(private service: DataService) { }
 
     getRosters(): Observable<Roster[]> {
-        return this.http.get(this.rosterUrl)
+        return this.service.get(this.rosterUrl)
             .map((res: Response) => res.json())
-            .catch((error: any) => Observable.throw(error.json().error || "Server Error retreiving Grades"));
+    }
+
+    getRostersByTypeAndId(type: string, id: number): Observable<Roster[]> {
+        let url = `${this.rosterUrl}/filterby${type}/${id}`;
+        return this.service.get(url)
+            .map((res: Response) => res.json())
     }
 
 }

@@ -1,5 +1,6 @@
 ﻿import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
@@ -19,7 +20,7 @@ import { RosterTableComponent } from './rosters/roster-table/roster-table.compon
 import { RosterItemComponent } from './rosters/roster-item/roster-item.component';
 
 import { TestComponent } from './test/test/test.component';
-import { InlineEditComponent } from './shared/inline-edit/inline-edit.component';
+import { InlineEditComponent } from './shared/components/inline-edit/inline-edit.component';
 import { StudentTemplateFormComponent } from './students/student-template-form/student-template-form.component';
 
 //Services
@@ -28,6 +29,9 @@ import { CourseService } from "./courses/course.service";
 import { GradeService } from "./grades/grade.service";
 import { RosterService } from "./rosters/roster.service";
 import { StudentFormComponent } from './students/student-form/student-form.component';
+import { DataService } from './shared/services/data.service';
+import { SortByPipe } from './shared/pipes/sort-by.pipe';
+
 
 
 @NgModule({
@@ -46,9 +50,11 @@ import { StudentFormComponent } from './students/student-form/student-form.compo
         RosterTableComponent,
         TestComponent,
         StudentFormComponent,
-        StudentTemplateFormComponent
+        StudentTemplateFormComponent,
+        SortByPipe
     ],
     imports: [
+        NgbModule.forRoot(),
         BrowserModule,
         FormsModule,
         ReactiveFormsModule,
@@ -56,6 +62,7 @@ import { StudentFormComponent } from './students/student-form/student-form.compo
         AppRoutingModule
     ],
     providers: [
+        DataService,
         StudentService,
         CourseService,
         GradeService,
