@@ -1,4 +1,4 @@
-.bold {
+/*.bold {
   font-weight: 700;
 }
 
@@ -20,4 +20,8 @@ input {
   border: 1px solid #ccc;
   border-radius: 2px;
   padding: 4px 10px;
+}*/
+
+input.ng-dirty {
+  border-color : red;
 }

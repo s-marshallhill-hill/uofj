@@ -1,0 +1,14 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th *ngFor="let column of columns">{{column.header}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr my-table-row *ngFor="let row of dataset" [row]="row" [columns]="columns" >
+    </tr>
+     <!--<tr my-tr-roster *ngFor="let roster of dataset" [roster]="roster"  >
+      
+    </tr>-->
+  </tbody>
+</table>

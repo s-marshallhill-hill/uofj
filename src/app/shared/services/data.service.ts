@@ -38,6 +38,10 @@ export class DataService {
       .catch(this.handleError);
   }
 
+  delete(url: string) : Observable<Response> {
+    return this.http.delete (url).catch(this.handleError);
+  }
+
   private handleError(error: any) {
     console.error('server error:', error);
     if (error instanceof Response) {

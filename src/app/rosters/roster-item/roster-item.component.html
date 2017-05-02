@@ -1,5 +1,15 @@
-﻿  <td scope="row">{{roster.id}}</td>
-  <td scope="row">{{roster.course}}</td>
-  <td scope="row">{{roster.studentName}}</td>
-  <td scope="row">{{roster.gradYear}}</td>
-  <td scope="row">{{roster.grade}}</td>
+﻿<td >{{roster.id}}</td>
+<td > <app-inline-edit [(ngModel)]="roster.course" typeof="text" [editing]="editing_row" (editRow)="editBegin()"></app-inline-edit></td>
+<td > <app-inline-edit [(ngModel)]="roster.studentName" typeof="text" [editing]="editing_row" (editRow)="editBegin()"></app-inline-edit></td>
+<td > <app-inline-edit [(ngModel)]="roster.gradYear" typeof="text" [editing]="editing_row" (editRow)="editBegin()"></app-inline-edit></td>
+<td > <app-inline-edit [(ngModel)]="roster.grade" typeof="text" [editing]="editing_row" (editRow)="editBegin()"></app-inline-edit></td>
+<td>
+  <span [hidden]="editing_row">
+        <i class="icon material-icons md-36" title="edit"
+            (click)="editing_row=true">mode_edit</i>
+    </span>
+    <span [hidden]="!editing_row">
+        <i class="icon material-icons md-36" title="Save"
+            (click)="editDone()">save</i>
+    </span>
+</td>

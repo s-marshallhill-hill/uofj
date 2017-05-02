@@ -1,11 +1,6 @@
 ﻿import { Component, OnInit, OnChanges, SimpleChange, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Observable } from "rxjs/Observable";
-import "rxjs/add/operator/debounceTime";
-import "rxjs/add/operator/distinctUntilChanged";
-import "rxjs/add/operator/map";
-
 import { Student, StudentService } from '../student.service';
 @Component({
     selector: 'app-student-table',

@@ -1,6 +1,6 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import {DataTableColumn} from '../../shared/components/data-table/data-table.component';
 import { Roster, RosterService } from '../roster.service';
 
 @Component({
@@ -11,7 +11,13 @@ import { Roster, RosterService } from '../roster.service';
 export class RosterTableComponent implements OnInit {
 
     rosters: Roster[] = [];
-
+    columns:  DataTableColumn[] = [
+        {property: "id", header: "Id"},
+        {property: "course", header: "Course"},
+        {property: "studentName", header: "Student"},
+        {property: "grade", header: "Grade"},
+        {property: "gradYear", header: "Graduation Year"}
+    ];
     constructor(private service: RosterService, private route: ActivatedRoute) { }
 
     ngOnInit() {

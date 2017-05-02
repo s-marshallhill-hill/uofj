@@ -1,10 +1,12 @@
 ﻿import {
     Component,
     Input,
+    Output,
     ElementRef,
     ViewChild,
     Renderer,
     forwardRef,
+    EventEmitter,
     OnInit
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -30,10 +32,12 @@ export class InlineEditComponent implements ControlValueAccessor, OnInit {
     @Input() type: string = 'text'; // The type of input element
     @Input() required: boolean = false; // Is input requried?
     @Input() disabled: boolean = false; // Is input disabled?
+    @Input() editing: boolean = false; // Is Component in edit mode?
+
+    @Output() editRow: EventEmitter<any> = new EventEmitter();
 
     private _value: string = ''; // Private variable for input value
     private preValue: string = ''; // The value before clicking to edit
-    private editing: boolean = false; // Is Component in edit mode?
 
     public onChange: any = Function.prototype; // Trascend the onChange event
     public onTouched: any = Function.prototype; // Trascend the onTouch event
@@ -75,14 +79,16 @@ export class InlineEditComponent implements ControlValueAccessor, OnInit {
 
     // Start the editting process for the input element
     edit(value) {
-        if (this.disabled) {
-            return;
-        }
+        // if (this.disabled) {
+        //     return;
+        // }
 
-        this.preValue = value;
-        this.editing = true;
-        // Focus on the input element just as the editing begins
-        setTimeout(_ => this._renderer.invokeElementMethod(this.inlineEditControl.nativeElement, 'focus', []));
+        // this.preValue = value;
+        // this.editing = true;
+        // // Focus on the input element just as the editing begins
+        // setTimeout(_ => this._renderer.invokeElementMethod(this.inlineEditControl.nativeElement, 'focus', []));
+        console.log("edit row");
+        this.editRow.emit();
     }
 
     ngOnInit() {

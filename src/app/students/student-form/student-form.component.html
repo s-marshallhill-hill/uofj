@@ -65,7 +65,7 @@
         <label class="center-block">
           State:
           <select class="form-control" formControlName="state">
-            <option *ngFor="let state of states" [value]="state.abbreviation">{{state.name}}</option>
+            <option *ngFor="let state of states" [value]="state.value">{{state.title}}</option>
           </select>
           <span *ngIf="formErrors.state" class="alert alert-danger">
             {{ formErrors.state }}
