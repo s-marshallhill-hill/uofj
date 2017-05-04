@@ -1,6 +1,8 @@
-﻿import { Component, OnInit, OnChanges, SimpleChange, SimpleChanges } from '@angular/core';
+﻿import { Component, OnInit, OnChanges, Input, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataTableColumn } from '../../shared/components/data-table/data-table.component';
+import { ActionConfirmationComponent } from '../../shared/components/action-confirmation/action-confirmation.component'
+import { MdDialog } from '@angular/material';
 
 import { Student, StudentService } from '../student.service';
 @Component({
@@ -10,6 +12,7 @@ import { Student, StudentService } from '../student.service';
 })
 export class StudentTableComponent implements OnInit {
     students: Student[];
+    deleteStudent: Student = null;
     columns: DataTableColumn[] = [
         { property: "id", header: "Id" },
         { property: "first", header: "First Name" },
@@ -22,6 +25,9 @@ export class StudentTableComponent implements OnInit {
         { property: "email", header: "Email" },
         { property: "gradYear", header: "Graduation Year" },
     ];
+
+    @ViewChild(ActionConfirmationComponent)
+    private deleteDialog: ActionConfirmationComponent;
 
     public saveCallback: Function;
 
@@ -41,6 +47,7 @@ export class StudentTableComponent implements OnInit {
 
     update(student) {
         console.log("updating student");
+        console.log(student);
         if (!student) { return; }
 
         this.service.updateStudent(student)
@@ -51,12 +58,27 @@ export class StudentTableComponent implements OnInit {
         this.router.navigate(['students/create'])
     }
 
-    delete(student) {
+    deleteRequested(student) {
         console.log("delete student");
-        if (student) {
-            this.service.deleteStudent(student).subscribe();
-            this.students = this.students.filter(studentData => studentData != student);
+        // if (student) {
+        //     this.service.deleteStudent(student).subscribe();
+        //     this.students = this.students.filter(studentData => studentData != student);
+        // }
+        this.deleteStudent = student;
+        this.deleteDialog.show();
+        
+    }
+
+    deleteConfirmed() {
+        if (this.deleteStudent) {
+            this.service.deleteStudent(this.deleteStudent).subscribe();
+            this.students = this.students.filter(studentData => studentData != this.deleteStudent);
         }
+        this.deleteStudent = null;
+        
+    }
+    deleteCanceled() {
+        this.deleteStudent = null;
     }
 
 }

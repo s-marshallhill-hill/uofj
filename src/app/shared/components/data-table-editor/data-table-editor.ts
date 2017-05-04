@@ -1,4 +1,4 @@
-﻿import {
+import {
     Component,
     Input,
     Output,
@@ -13,20 +13,13 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 const INLINE_EDIT_CONTROL_VALUE_ACCESSOR = {
     provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => InlineEditComponent),
+    useExisting: forwardRef(() => DefaultEditor),
     multi: true
 };
 
-@Component({
-    selector: 'app-inline-edit',
-    templateUrl: './inline-edit.component.html',
-    providers: [INLINE_EDIT_CONTROL_VALUE_ACCESSOR],
-    styleUrls: ['./inline-edit.component.css']
-})
+export class DefaultEditor implements ControlValueAccessor, OnInit {
 
-export class InlineEditComponent implements ControlValueAccessor, OnInit {
-
-    @ViewChild('inlineEditControl') inlineEditControl: ElementRef; // input DOM element
+    @ViewChild('InputControl') InputControl: ElementRef; // input DOM element
 
     @Input() label: string = '';  // Label value for input element
     @Input() type: string = 'text'; // The type of input element
@@ -39,6 +32,9 @@ export class InlineEditComponent implements ControlValueAccessor, OnInit {
         return this._editing;
     }
     set editing(isEditing: boolean){
+        console.log(this.editBegin);
+        console.log(this.editDone);
+        console.log("editing cell");
         if (isEditing) {
             if (!this._editing){
                 this.preValue = this._value;
@@ -54,8 +50,8 @@ export class InlineEditComponent implements ControlValueAccessor, OnInit {
             }
         }
     }
-    @Output() editBegin: EventEmitter<any> = new EventEmitter();
-    @Output() editDone: EventEmitter<any> = new EventEmitter();
+    @Input() editBegin: EventEmitter<any>;
+    @Input() editDone: EventEmitter<any>;
 
     private _value: string = ''; // Private variable for input value
     private preValue: string = ''; // The value before clicking to edit
@@ -64,6 +60,7 @@ export class InlineEditComponent implements ControlValueAccessor, OnInit {
     public onTouched: any = Function.prototype; // Trascend the onTouch event
 
     // Control Value Accessors for ngModel
+    @Input()
     get value(): any {
         return this._value;
     }
@@ -111,8 +108,9 @@ export class InlineEditComponent implements ControlValueAccessor, OnInit {
         // setTimeout(_ => this._renderer.invokeElementMethod(this.inlineEditControl.nativeElement, 'focus', []));
 
         //this.editBegin.emit();
+        console.log("edit value");
         this.editing=true;
-        setTimeout(_ => this._renderer.invokeElementMethod(this.inlineEditControl.nativeElement, 'focus', []));
+      //  setTimeout(_ => this._renderer.invokeElementMethod(this.InputControl.nativeElement, 'focus', []));
         
     }
 

@@ -44,6 +44,12 @@ import { MdComponent } from './test/md/md/md.component';
 //import { DataTableEditableRowDirective } from './shared/directives/data-table-editable-row.directive';
 
 import 'hammerjs';
+import { ActionConfirmationComponent } from './shared/components/action-confirmation/action-confirmation.component';
+import { InlineSelectComponent } from './shared/components/inline-select/inline-select.component';
+import { DataTablesCellViewComponent } from './shared/components/data-tables-cell-view/data-tables-cell-view.component';
+import { DataTablesCellComponent } from './shared/components/data-tables-cell/data-tables-cell.component';
+import { InputEditorComponent } from './shared/components/data-table-editor/input-editor/input-editor.component';
+import { EditComponentComponent } from './shared/components/data-table-editor/edit-component/edit-component.component';
 
 
 @NgModule({
@@ -69,6 +75,12 @@ import 'hammerjs';
         DataTableColumnComponent,
         StudentTable2Component,
         MdComponent,
+        ActionConfirmationComponent,
+        InlineSelectComponent,
+        DataTablesCellViewComponent,
+        DataTablesCellComponent,
+        InputEditorComponent,
+        EditComponentComponent,
     ],
     imports: [
         NgbModule.forRoot(),
@@ -88,6 +100,8 @@ import 'hammerjs';
         GradeService,
         RosterService
     ],
+    entryComponents: [ActionConfirmationComponent],
+
     bootstrap: [AppComponent]
 })
 export class AppModule { }

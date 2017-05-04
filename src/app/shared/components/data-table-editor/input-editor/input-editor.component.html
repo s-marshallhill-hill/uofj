@@ -1,0 +1,4 @@
+<md-input-container>
+  <input mdInput #inlineEditControl [required]="required" [name]="value" [(ngModel)]="value" [type]="type" [placeholder]="label"
+    (keyup.enter)="editing = false" (click)="edit(value)"/>
+</md-input-container>

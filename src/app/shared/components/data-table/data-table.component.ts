@@ -12,6 +12,8 @@ export interface DataTableColumn {
   styleUrls: ['./data-table.component.css']
 })
 export class DataTableComponent {
+
+
   @Input() public saveCallback: Function;
   @Input() dataset;
   @Input() columns: DataTableColumnComponent[] = [];

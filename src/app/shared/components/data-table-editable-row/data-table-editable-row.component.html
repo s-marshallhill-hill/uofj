@@ -1,5 +1,5 @@
 <td *ngFor="let column of columns">
-  <app-inline-edit [(ngModel)]="row[column.property]" typeof="text" [editing]="editing_row" (editBegin)="editBegin()" (editDone)="editDone()"></app-inline-edit>
+  <data-tables-cell [column]="column"  [value]="row[column.property]" typeof="text" [editing]="editing_row" (editBegin)="editBegin()" (editDone)="editDone()"></data-tables-cell>
 </td>
 <!--<td *ngFor="let column of columns">{{row[column.value]}}</td>-->
 <td>
@@ -11,5 +11,8 @@
         </span>
   <span [hidden]="!editing_row">
           <i class="icon material-icons md-36" title="Save" (click)="editDone()">save</i>
+        </span>
+  <span [hidden]="!editing_row">
+          <i class="icon material-icons md-36" title="cancel" (click)="editCancel()">clear</i>
         </span>
 </td>

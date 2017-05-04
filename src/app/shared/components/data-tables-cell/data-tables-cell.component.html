@@ -1,0 +1,8 @@
+<div *ngIf="editing">
+  <app-edit-component [required]="column.required" [label]="column.label" [type]="column.type" [value]="value" [editBegin]="editBegin" [editDone]="editDone"></app-edit-component>
+  <!--<input #inlineEditControl [required]="required" (blur)="onBlur($event)" [name]="value" [(ngModel)]="value" [type]="type" [placeholder]="label" (keyup.enter)="editing = false"/>-->
+</div>
+<div *ngIf="!editing">
+  <!--<label class="block bold">{{label}}</label>-->
+  <data-tables-cell-view title="Click to edit" (click)="edit(value)" (focus)="edit(value);" tabindex="0" class="inline-edit" [value]="value"></data-tables-cell-view>
+</div>

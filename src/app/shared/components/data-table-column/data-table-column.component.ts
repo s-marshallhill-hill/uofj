@@ -9,6 +9,9 @@ import { DataTableComponent } from '../data-table/data-table.component';
 export class DataTableColumnComponent {
   @Input() value;
   @Input() header;
+  @Input() required: boolean;
+  @Input() type: string = "text";
+  @Input() editing: boolean = false;
 
   constructor(table: DataTableComponent) {
     //table.addColumn(this)
