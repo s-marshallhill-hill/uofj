@@ -1,6 +1,9 @@
 ﻿<div>
   <div *ngIf="editing">
-    <input #inlineEditControl [required]="required" [name]="value" [(ngModel)]="value" [type]="type" [placeholder]="label"/>
+    <md-input-container>
+      <input mdInput #inlineEditControl [required]="required" [name]="value" [(ngModel)]="value" [type]="type" [placeholder]="label"
+      (keyup.enter)="editing = false"/>
+    </md-input-container>
     <!--<input #inlineEditControl [required]="required" (blur)="onBlur($event)" [name]="value" [(ngModel)]="value" [type]="type" [placeholder]="label" (keyup.enter)="editing = false"/>-->
   </div>
   <div *ngIf="!editing">

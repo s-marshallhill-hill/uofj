@@ -1,92 +1,111 @@
 ﻿<div class="row">
   <div class="col-md-12">
+    <md-card>
     <h2>Add a Student</h2>
     <form #f="ngForm" (ngSubmit)="onSubmit()" novalidate>
       <div class="container">
-        <div class="form-group row" [ngClass]="{'has-danger': (firstname.touched || firstname.dirty) && firstname.errors }">
-          <label class="col-sm-2 col-form-label">First name:</label>
-          <div class="col-sm-8">
-            <input class="form-control" [(ngModel)]="student.first" name="first" required #firstname="ngModel">
-            <small class="form-control-feedback" *ngIf="firstname.errors?.required && firstname.touched">
-              First name is required
-            </small>
+        <div class="row">
+          <!--<div class="form-group" [ngClass]="{'has-danger': (firstname.touched || firstname.dirty) && firstname.errors }">-->
+          <!--<label class="col-sm-2 col-form-label">First name:</label>-->
+          <div class="col-sm-6">
+            <md-input-container class="input-full-width">
+              <input mdInput #firstnameInput class="form-control" maxlength="150" [(ngModel)]="student.first" name="first" required #firstname="ngModel"
+                placeholder="First Name">
+              <md-hint align="end">{{firstnameInput.value.length}} / 150</md-hint>
+              <md-error *ngIf="firstname.errors?.required && firstname.touched">
+                First name is required
+              </md-error>
+            </md-input-container>
           </div>
-        </div>
-        <div class="form-group row" [ngClass]="{'has-danger': (lastname.touched || lastname.dirty) && lastname.errors }">
-          <label class="col-sm-2 col-form-label">
+          <!--</div>-->
+          <!--<div class="form-group" [ngClass]="{'has-danger': (lastname.touched || lastname.dirty) && lastname.errors }">-->
+          <!--<label class="col-sm-2 col-form-label">
             Last Name:
-          </label>
-          <div class="col-sm-8">
-            <input class="form-control" [(ngModel)]="student.last" name="last" required #lastname="ngModel">
-            <small class="form-control-feedback" *ngIf="lastname.errors?.required && lastname.touched">
-              Last name is required
-            </small>
-          </div>
-        </div>
-        <div clas="form-group row">
-          <!--<div class="form-group">-->
-          <label class="col-sm-2 col-form-label">Age:</label>
-          <div class="col-sm-2">
-            <input class="form-control" [(ngModel)]="student.age" name="age" type="number" min="18" max="30">
-          </div>
-          <!--</div>-->
-          <!--<div class="form-group">-->
-          <label class="col-sm-4 col-form-label"> Year:</label>
-          <div class="col-sm-2">
-            <input class="form-control" [(ngModel)]="student.gradYear" name="gradYear" type="number" min="2010" max="2050">
+          </label>-->
+          <div class="col-sm-6">
+            <md-input-container class="input-full-width">
+              <input mdInput #lastnameInput class="form-control" maxlength="150" [(ngModel)]="student.last" name="last" required #lastname="ngModel"
+                placeholder="Last Name">
+              <md-hint align="end">{{lastnameInput.value.length}} / 150</md-hint>
+              <md-error *ngIf="lastname.errors?.required && lastname.touched">
+                Last name is required
+              </md-error>
+            </md-input-container>
           </div>
           <!--</div>-->
         </div>
-        <div class="form-group row" [ngClass]="{'has-danger': (email.touched || email.dirty) && email.errors }">
-          <label class="col-sm-2 col-form-label">
-            Email:
-          </label>
-          <div class="col-sm-8">
-            <input class="form-control" [(ngModel)]="student.email" name="email" type="email" #email="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+">
-            <small class="form-control-feedback" *ngIf="email.errors?.pattern && email.touched">
-              Email address is invalid.
-            </small>
+        <div class="row">
+          <!--<div clas="form-group row">-->
+          <!--<div class="form-group">-->
+          <!--<label class="col-sm-2 col-form-label">Age:</label>-->
+          <div class="col-sm-2">
+            <md-input-container class="input-full-width">
+              <input class="form-control" mdInput #ageInput [(ngModel)]="student.age" name="age" maxlength="3" type="number" min="18" max="30"
+                placeholder="Age">
+              <md-hint align="end">{{ageInput.value.length}} / 3</md-hint>
+            </md-input-container>
+
           </div>
+          <!--</div>-->
+          <!--<div class="form-group">-->
+          <!--<label class="col-sm-4 col-form-label"> Year:</label>-->
+          <div class="col-sm-2">
+            <md-input-container class="input-full-width">
+              <input class="form-control" mdInput [(ngModel)]="student.gradYear" maxlength="4" name="gradYear" type="number" min="2010"
+                max="2050" placeholder="Graduation Year">
+              <md-hint align="end">{{ageInput.value.length}} / 4</md-hint>
+            </md-input-container>
+          </div>
+          <div class="col-sm-8">
+            <md-input-container class="input-full-width">
+              <input mdInput #emailInput class="form-control" [(ngModel)]="student.email" maxlength= 50 name="email" type="email" #email="ngModel"
+                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+" placeholder="Email">
+              <md-hint align="end">{{emailInput.value.length}} / 150</md-hint>
+              <md-error *ngIf="email.errors?.pattern && email.touched">
+                Email address is invalid.
+              </md-error>
+            </md-input-container>
+          </div>
+          <!--</div>-->
         </div>
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label">
+
+        <div class="row">
+          <!--<label class="col-sm-2 col-form-label">
             Street Address:
-          </label>
-          <div class="col-sm-4">
-            <input class="form-control" [(ngModel)]="student.address" name="address">
+          </label>-->
+          <div class="col-sm-6">
+            <md-input-container class="input-full-width">
+              <input mdInput #addressInput class="form-control" [(ngModel)]="student.address" maxlength=150 name="address" placeholder="Address">
+              <md-hint align="end">{{addressInput.value.length}} / 150</md-hint>              
+            </md-input-container>
           </div>
 
-          <label class="col-sm-1 col-form-label">
-            City:
-          </label>
-          <div class="col-sm-4">
-            <input class="form-control" [(ngModel)]="student.city" name="city">
+          <div class="col-sm-6">
+            <md-input-container class="input-full-width">
+            <input mdInput #cityInput class="form-control" [(ngModel)]="student.city" name="city" maxLength=50 placeholder="City">
+            </md-input-container>
           </div>
         </div>
-        <div class="form-group row">
-          <label class="col-sm-2 col-form-label">
-            State:
-
-          </label>
+        <div class="row">
           <div class="col-sm-4">
-
-            <select class="form-control" [(ngModel)]="student.state" name="state">
-              <option *ngFor="let state of states" [value]="state.abbreviation">{{state.name}}</option>
-            </select>
+            <md-select class="input-full-width" [(ngModel)]="student.state" name="state" placeholder="State">
+              <md-option *ngFor="let state of states" [value]="state.abbreviation">{{state.name}}</md-option>
+            </md-select>
           </div>
-          <label class="col-sm-2 col-form-label">
-            Zip Code:
-          </label>
-          <div class="col-sm-4">
 
-            <input class="form-control" [(ngModel)]="student.zip" name="zip">
+          <div class="col-sm-4">
+            <md-input-container class="input-full-width">
+            <input mdInput #zipInput maxLength=5 class="form-control" [(ngModel)]="student.zip" name="zip" placeholder="Zip">
+            <md-hint align="end">{{zipInput.value.length}} / 5</md-hint>              
+            </md-input-container>
           </div>
 
         </div>
         <button type="submit" [disabled]="f.pristine || !f.valid" class="btn btn-success">
           Save
-        </button> &nbsp; {{ f.controls.email?.errors | json }}
+        </button> 
       </div>
     </form>
+    </md-card>
   </div>
 </div>

@@ -1,10 +1,13 @@
 <td *ngFor="let column of columns">
-  <app-inline-edit [(ngModel)]="row[column.property]" typeof="text" [editing]="editing_row" (editRow)="editBegin()"></app-inline-edit>
+  <app-inline-edit [(ngModel)]="row[column.property]" typeof="text" [editing]="editing_row" (editBegin)="editBegin()" (editDone)="editDone()"></app-inline-edit>
 </td>
 <!--<td *ngFor="let column of columns">{{row[column.value]}}</td>-->
 <td>
   <span [hidden]="editing_row">
           <i class="icon material-icons md-36" title="edit" (click)="editing_row=true">mode_edit</i>
+        </span>
+  <span [hidden]="editing_row">
+          <i class="icon material-icons md-36" title="delete" (click)="deleteRowHandler()">delete</i>
         </span>
   <span [hidden]="!editing_row">
           <i class="icon material-icons md-36" title="Save" (click)="editDone()">save</i>

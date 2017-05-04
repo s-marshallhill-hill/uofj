@@ -1,14 +1,16 @@
-﻿<div class="row ">
-  <div class="col">
-    <button type="button" class="btn btn-success" (click)="createNewStudent()">Add A Student</button>
+﻿<md-card>
+<div class="row ">
+  <div class="col-md-1 offset-md-11">
+     <button  md-mini-fab role="button" class="table-add" (click)="createNewStudent()"><md-icon>add</md-icon></button>
   </div>
 </div>
-
+<br>
+  <data-table [dataset]=students [columns]=columns [saveCallback]="saveCallback" (saveRow)="update($event)" (deleteRow)="delete($event)">
+  </data-table>
 <div class="row">
   <div class="col-md-12">
-     <button role="button" class="table-add" (click)="createNewStudent()">+</button>
      
-    <table class="table">
+    <!--<table class="table">
       <thead>
         <th>First Name</th>
         <th>Last Name</th>
@@ -21,9 +23,9 @@
         <th>Graduation Year</th>
       </thead>
       <tbody>
-        <tr *ngFor="let student of students" (change)="update(student)">
+        <tr *ngFor="let student of students" (change)="update(student)">-->
           <!--<app-student #comp [student] ="student" (change)="comp.update(student)" ></app-student>-->
-          <td>
+          <!--<td>
             <app-inline-edit [(ngModel)]="student.first" typeof="text"></app-inline-edit>
           </td>
           <td>
@@ -55,3 +57,4 @@
     </table>
   </div>
 </div>
+</md-card>-->

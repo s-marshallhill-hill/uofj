@@ -32,9 +32,28 @@ export class InlineEditComponent implements ControlValueAccessor, OnInit {
     @Input() type: string = 'text'; // The type of input element
     @Input() required: boolean = false; // Is input requried?
     @Input() disabled: boolean = false; // Is input disabled?
-    @Input() editing: boolean = false; // Is Component in edit mode?
 
-    @Output() editRow: EventEmitter<any> = new EventEmitter();
+    private _editing: boolean = false; // Is Component in edit mode?
+    @Input() 
+    get editing():boolean{
+        return this._editing;
+    }
+    set editing(isEditing: boolean){
+        if (isEditing) {
+            if (!this._editing){
+                this._editing = true;
+                this.editBegin.emit();
+            }
+        }
+        else {
+            if (this._editing){
+                this._editing = false;
+                this.editDone.emit();
+            }
+        }
+    }
+    @Output() editBegin: EventEmitter<any> = new EventEmitter();
+    @Output() editDone: EventEmitter<any> = new EventEmitter();
 
     private _value: string = ''; // Private variable for input value
     private preValue: string = ''; // The value before clicking to edit
@@ -54,6 +73,7 @@ export class InlineEditComponent implements ControlValueAccessor, OnInit {
         }
     }
 
+   
     constructor(element: ElementRef, private _renderer: Renderer) {
     }
 
@@ -87,8 +107,11 @@ export class InlineEditComponent implements ControlValueAccessor, OnInit {
         // this.editing = true;
         // // Focus on the input element just as the editing begins
         // setTimeout(_ => this._renderer.invokeElementMethod(this.inlineEditControl.nativeElement, 'focus', []));
-        console.log("edit row");
-        this.editRow.emit();
+
+        //this.editBegin.emit();
+        this.editing=true;
+        setTimeout(_ => this._renderer.invokeElementMethod(this.inlineEditControl.nativeElement, 'focus', []));
+        
     }
 
     ngOnInit() {

@@ -32,4 +32,9 @@ export class RosterService {
             .map((res: Response) => res.json())
     }
 
+    saveRoster(roster: Roster): Observable<Response> {
+        let url = `${this.rosterUrl}/${roster.id}`;
+        return this.service.put(url, roster);
+    }
+
 }

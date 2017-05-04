@@ -2,10 +2,11 @@
   <thead>
     <tr>
       <th *ngFor="let column of columns">{{column.header}}</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
-    <tr my-table-row *ngFor="let row of dataset" [row]="row" [columns]="columns" >
+    <tr my-table-row *ngFor="let row of dataset" [row]="row" [columns]="columns" [saveRow] = "saveRow" [deleteRow] = "deleteRow" >
     </tr>
      <!--<tr my-tr-roster *ngFor="let roster of dataset" [roster]="roster"  >
       

@@ -18,9 +18,13 @@ export class RosterTableComponent implements OnInit {
         {property: "grade", header: "Grade"},
         {property: "gradYear", header: "Graduation Year"}
     ];
+
+    public saveCallback: Function;
+
     constructor(private service: RosterService, private route: ActivatedRoute) { }
 
     ngOnInit() {
+        this.saveCallback = this.saveRoster.bind(this);
         if (this.route.snapshot.params['type'] !== undefined) {
             this.getRostersByTypeAndId(
                 this.route.snapshot.params['type'],
@@ -42,5 +46,10 @@ export class RosterTableComponent implements OnInit {
         this.service.getRosters()
             .subscribe(rosters => this.rosters = rosters,
             err => { console.log(err); });
+    }
+
+    saveRoster(roster){
+        console.log("save roster");
+        this.service.saveRoster(roster).subscribe();
     }
 }

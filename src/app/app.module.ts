@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { MdIconModule, MdInputModule, MdCheckboxModule, MdProgressBarModule, MdButtonModule } from '@angular/material';
+import { MaterialModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -72,17 +72,13 @@ import 'hammerjs';
     ],
     imports: [
         NgbModule.forRoot(),
-        MdIconModule,
-        MdInputModule,
-        MdCheckboxModule,
-        MdProgressBarModule,
-        MdButtonModule,
         BrowserModule,
         FormsModule,
         ReactiveFormsModule,
         HttpModule,
         AppRoutingModule,
         Ng2SmartTableModule,
+        MaterialModule.forRoot(),
         BrowserAnimationsModule
     ],
     providers: [

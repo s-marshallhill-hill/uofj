@@ -19,7 +19,7 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "../node_modules/bootstrap/dist/css/bootstrap.min.css",        
+        "../node_modules/daemonite-material/css/material.min.css",        
         "styles.css",
         "./assets/custom-theme.scss"
       ],

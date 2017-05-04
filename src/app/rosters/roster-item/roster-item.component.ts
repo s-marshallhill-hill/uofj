@@ -12,7 +12,6 @@ export class RosterItemComponent implements OnInit {
     editing_row: boolean = false;
 
     constructor(private service: RosterService, private roster_table: RosterTableComponent) { 
-        console.log (roster_table);
     }
 
     ngOnInit() {

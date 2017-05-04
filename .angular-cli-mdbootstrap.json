@@ -19,12 +19,15 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "../node_modules/bootstrap/dist/css/bootstrap.min.css",        
+        "../node_modules/mdbootstrap/css/bootstrap.min.css",        
+        "../node_modules/mdbootstrap/css/mdb.min.css",
         "styles.css",
         "./assets/custom-theme.scss"
       ],
       "scripts": [
-        "../node_modules/hammerjs/hammer.min.js"
+        "../node_modules/hammerjs/hammer.min.js",
+        "../node_modules/mdbootstrap/js/mdb.min.js"
+        
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

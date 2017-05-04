@@ -1,43 +1,44 @@
-﻿
+﻿<md-card (saveRow)="saveRoster($event)">
 
 
-<data-table [dataset]=rosters [columns]=columns>
-  <!--<data-table-column [value]="'id'" [header]="'Id'"></data-table-column>
+  <data-table [dataset]=rosters [columns]=columns [saveCallback]="saveCallback">
+    <!--<data-table-column [value]="'id'" [header]="'Id'"></data-table-column>
   <data-table-column [value]="'course'" [header]="'Course'"></data-table-column>
   <data-table-column [value]="'studentName'" [header]="'Student'"></data-table-column>
   <data-table-column [value]="'gradYear'" [header]="'Year'"></data-table-column>
   <data-table-column [value]="'grade'" [header]="'Grade'"></data-table-column>
   -->
-</data-table>
+  </data-table>
 
-<table class="table">
-  <thead>
-    <th>Id</th>
-    <th>Course</th>
-    <th>Student</th>
-    <th>Graduation Year</th>
-    <th>Grade</th>
-  </thead>
-  <tbody>
-    <!--<span>-->
-    <!--<tr my-tr *ngFor="let roster of ( rosters | sortBy : 'studentName')" [roster]="roster"  >-->
-    <tr my-tr-roster *ngFor="let roster of rosters" [roster]="roster"  >
-      
-    </tr>
-    <!--<tr *ngFor="let roster of ( rosters | sortBy : 'studentName')">
+  <table class="table">
+    <thead>
+      <th>Id</th>
+      <th>Course</th>
+      <th>Student</th>
+      <th>Graduation Year</th>
+      <th>Grade</th>
+    </thead>
+    <tbody>
+      <!--<span>-->
+      <!--<tr my-tr *ngFor="let roster of ( rosters | sortBy : 'studentName')" [roster]="roster"  >-->
+      <tr my-tr-roster *ngFor="let roster of rosters" [roster]="roster">
+
+      </tr>
+      <!--<tr *ngFor="let roster of ( rosters | sortBy : 'studentName')">
       <td scope="row">{{roster.id}}</td>
       <td scope="row">{{roster.course}}</td>
       <td scope="row">{{roster.studentName}}</td>
       <td scope="row">{{roster.gradYear}}</td>
       <td scope="row">{{roster.grade}}</td>
     </tr>-->
-    <!--</span>-->
-    <!--<tr *ngFor="let roster of ( rosters | sortBy : 'studentName')">
+      <!--</span>-->
+      <!--<tr *ngFor="let roster of ( rosters | sortBy : 'studentName')">
       <td scope="row">{{roster.id}}</td>
       <td scope="row">{{roster.course}}</td>
       <td scope="row">{{roster.studentName}}</td>
       <td scope="row">{{roster.gradYear}}</td>
       <td scope="row">{{roster.grade}}</td>
     </tr>-->
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</md-card>
