@@ -32,9 +32,7 @@ export class DefaultEditor implements ControlValueAccessor, OnInit {
         return this._editing;
     }
     set editing(isEditing: boolean){
-        console.log(this.editBegin);
-        console.log(this.editDone);
-        console.log("editing cell");
+       
         if (isEditing) {
             if (!this._editing){
                 this.preValue = this._value;
@@ -45,6 +43,7 @@ export class DefaultEditor implements ControlValueAccessor, OnInit {
         }
         else {
             if (this._editing){
+                console.log("stop editing");
                 this._editing = false;
                 this.editDone.emit();
             }
@@ -52,7 +51,7 @@ export class DefaultEditor implements ControlValueAccessor, OnInit {
     }
     @Input() editBegin: EventEmitter<any>;
     @Input() editDone: EventEmitter<any>;
-
+    @Output() valueChanged: EventEmitter<any> = new EventEmitter();
     private _value: string = ''; // Private variable for input value
     private preValue: string = ''; // The value before clicking to edit
 
@@ -66,9 +65,11 @@ export class DefaultEditor implements ControlValueAccessor, OnInit {
     }
 
     set value(v: any) {
+        //console.log("setting value " + v)
         if (v !== this._value) {
             this._value = v;
             this.onChange(v);
+            this.valueChanged.emit(this.value);
         }
     }
 
@@ -78,6 +79,7 @@ export class DefaultEditor implements ControlValueAccessor, OnInit {
 
     // Required for ControlValueAccessor interface
     writeValue(value: any) {
+        console.log("write value " + value);
         this._value = value;
     }
 

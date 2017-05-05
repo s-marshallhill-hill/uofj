@@ -1,4 +1,4 @@
-import { Component, OnInit,  Input, Output, EventEmitter, ViewChildren, QueryList, OnChanges, SimpleChange } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChildren, QueryList, OnChanges, SimpleChange } from '@angular/core';
 import { InlineEditComponent } from '../inline-edit/inline-edit.component'
 
 @Component({
@@ -7,7 +7,7 @@ import { InlineEditComponent } from '../inline-edit/inline-edit.component'
   templateUrl: './data-table-editable-row.component.html',
   styleUrls: ['./data-table-editable-row.component.css']
 })
-export class DataTableEditableRowComponent implements OnInit, OnChanges  {
+export class DataTableEditableRowComponent implements OnInit {
   @ViewChildren(InlineEditComponent) editors: QueryList<InlineEditComponent>;
 
   @Input() row: any;
@@ -23,19 +23,6 @@ export class DataTableEditableRowComponent implements OnInit, OnChanges  {
     console.log(this.editors);
   }
 
-  ngOnChanges(changes: {[propKey: string]: SimpleChange}) {
-    for (let propName in changes) {
-      let changedProp = changes[propName];
-      //let to = JSON.stringify(changedProp.currentValue);
-      let to = changedProp.currentValue;
-      if (changedProp.isFirstChange()) {
-        console.log(`Initial value of ${propName} set to ${to}`);
-      } else {
-        let from = JSON.stringify(changedProp.previousValue);
-        console.log(`${propName} changed from ${from} to ${to}`);
-      }
-    }
-  }
   editBegin() {
 
     if (!this.editing_row) {

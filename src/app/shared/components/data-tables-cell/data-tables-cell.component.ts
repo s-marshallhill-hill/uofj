@@ -7,9 +7,20 @@ import { DataTableColumnComponent } from '../data-table-column/data-table-column
   styleUrls: ['./data-tables-cell.component.css']
 })
 export class DataTablesCellComponent implements OnInit {
+
+  private _value;
   @Input() editing: boolean = false; // Is Component in edit mode?
   @Input() column: DataTableColumnComponent;
-  @Input() value;
+  @Input()
+  get value () {
+    return this._value
+  }
+  set value(newValue) {
+    this._value = newValue;
+    this.valueChanged.emit(this._value);
+  }
+
+  @Output() valueChanged: EventEmitter<any> = new EventEmitter();
   @Output() editBegin: EventEmitter<any> = new EventEmitter();
   @Output() editDone: EventEmitter<any> = new EventEmitter();
 
@@ -34,5 +45,9 @@ export class DataTablesCellComponent implements OnInit {
     this.editBegin.emit();
     //setTimeout(_ => this._renderer.invokeElementMethod(this.InputControl.nativeElement, 'focus', []));
 
+  }
+
+  update(newValue) {
+    this.value = newValue;
   }
 }

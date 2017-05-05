@@ -12,6 +12,7 @@ export class DataTableColumnComponent {
   @Input() required: boolean;
   @Input() type: string = "text";
   @Input() editing: boolean = false;
+  @Input() listValues: any[] = [];
 
   constructor(table: DataTableComponent) {
     //table.addColumn(this)

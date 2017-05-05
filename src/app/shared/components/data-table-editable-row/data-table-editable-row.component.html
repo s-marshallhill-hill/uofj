@@ -1,5 +1,5 @@
 <td *ngFor="let column of columns">
-  <data-tables-cell [column]="column"  [value]="row[column.property]" typeof="text" [editing]="editing_row" (editBegin)="editBegin()" (editDone)="editDone()"></data-tables-cell>
+  <data-tables-cell [column]="column"  (value)="row[column.property]" (valueChanged)="row[column.property] = $event" typeof="text" [editing]="editing_row" (editBegin)="editBegin()" (editDone)="editDone()"></data-tables-cell>
 </td>
 <!--<td *ngFor="let column of columns">{{row[column.value]}}</td>-->
 <td>

@@ -24,7 +24,8 @@
   <!--<completer-editor *ngSwitchCase="'completer'"
                       [cell]="cell">
     </completer-editor>-->
+  <!--<app-input-editor  *ngSwitchDefault [required]="column.required"  (valueChanged)="update($event)" [value]="value" [type]="column.type" [label]="column.label" [disabled]="!column.editable" [editBegin] ="editBegin" [editDone]="editDone">-->
 
-  <app-input-editor  *ngSwitchDefault [required]="required"  [value]="value" [type]="type" [label]="label" [editBegin] ="editBegin" [editDone]="editDone">
+  <app-input-editor  *ngSwitchDefault [required]="column.required"  (valueChanged)="update($event)" [value]="value" [type]="column.type" [label]="column.label" [editBegin] ="editBegin" [editDone]="editDone">
   </app-input-editor>
 </div>

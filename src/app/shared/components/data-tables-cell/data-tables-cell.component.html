@@ -1,5 +1,5 @@
 <div *ngIf="editing">
-  <app-edit-component [required]="column.required" [label]="column.label" [type]="column.type" [value]="value" [editBegin]="editBegin" [editDone]="editDone"></app-edit-component>
+  <app-edit-component [column]=column [value]="value" (valueChanged)="update($event)" [editBegin]="editBegin" [editDone]="editDone"></app-edit-component>
   <!--<input #inlineEditControl [required]="required" (blur)="onBlur($event)" [name]="value" [(ngModel)]="value" [type]="type" [placeholder]="label" (keyup.enter)="editing = false"/>-->
 </div>
 <div *ngIf="!editing">
