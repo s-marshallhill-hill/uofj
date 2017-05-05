@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Student, StudentService } from '../../students/student.service';
 
 @Component({
   selector: 'app-test',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TestComponent implements OnInit {
 
-  constructor() { }
+  students;
+  constructor(private service: StudentService) { }
 
   ngOnInit() {
+    this.service.getStudentsList()
+      .subscribe(students => this.students = students,
+      err => { console.log(err); });
   }
 
 }

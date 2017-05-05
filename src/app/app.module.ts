@@ -50,6 +50,8 @@ import { DataTablesCellViewComponent } from './shared/components/data-tables-cel
 import { DataTablesCellComponent } from './shared/components/data-tables-cell/data-tables-cell.component';
 import { InputEditorComponent } from './shared/components/data-table-editor/input-editor/input-editor.component';
 import { EditComponentComponent } from './shared/components/data-table-editor/edit-component/edit-component.component';
+import { RosterTable2Component } from './rosters/roster-table2/roster-table2.component';
+import { ListViewRendererComponent } from './shared/components/list-view-renderer/list-view-renderer.component';
 
 
 @NgModule({
@@ -67,6 +69,8 @@ import { EditComponentComponent } from './shared/components/data-table-editor/ed
         GradeGridComponent,
         RosterTableComponent,
         TestComponent,
+        ListViewRendererComponent,
+        
         StudentFormComponent,
         StudentTemplateFormComponent,
         SortByPipe,
@@ -81,6 +85,7 @@ import { EditComponentComponent } from './shared/components/data-table-editor/ed
         DataTablesCellComponent,
         InputEditorComponent,
         EditComponentComponent,
+        RosterTable2Component,
     ],
     imports: [
         NgbModule.forRoot(),
@@ -100,7 +105,8 @@ import { EditComponentComponent } from './shared/components/data-table-editor/ed
         GradeService,
         RosterService
     ],
-    entryComponents: [ActionConfirmationComponent],
+        
+    entryComponents: [ActionConfirmationComponent,ListViewRendererComponent],
 
     bootstrap: [AppComponent]
 })

@@ -16,7 +16,7 @@ import { DefaultEditor } from './default-editor';
             style="margin-top:15px">
 
         <md-option *ngFor="let option of cell.getColumn().getConfig()?.list" [value]="option.value"
-                >{{ option.title }}
+               >{{ option.title }}
         </md-option>
     </md-select>
     `,

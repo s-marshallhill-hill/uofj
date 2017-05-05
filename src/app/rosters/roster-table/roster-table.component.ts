@@ -50,6 +50,6 @@ export class RosterTableComponent implements OnInit {
 
     saveRoster(roster){
         console.log("save roster");
-        this.service.saveRoster(roster).subscribe();
+        this.service.createRoster(roster).subscribe();
     }
 }

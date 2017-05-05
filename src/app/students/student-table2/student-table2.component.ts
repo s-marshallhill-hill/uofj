@@ -18,11 +18,14 @@ export class StudentTable2Component implements OnInit {
       },
       first: {
         title: 'First Name',
-        filter: false
+        filter: false,
+        required: true
       },
       last: {
         title: 'Last Name',
-        filter: false
+        filter: false,
+        required: true
+        
       },
       address: {
         title: 'Address',
@@ -126,7 +129,7 @@ export class StudentTable2Component implements OnInit {
     console.log(student);
     if (!student) { event.confirm.reject(); return }
 
-    this.service.updateStudent(student)
+    this.service.deleteStudent(student)
       .subscribe();
 
       event.confirm.resolve();

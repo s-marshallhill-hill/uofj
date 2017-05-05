@@ -12,6 +12,16 @@ export interface Course {
     code: string;
 }
 
+export class CourseListItem {
+    value: number;
+    title: string;
+
+    constructor(course: Course) {
+        this.value = course.id;
+        this.title = course.code;
+    }
+}
+
 @Injectable()
 export class CourseService {
     private courseUrl: string = '/api/courses';
@@ -23,15 +33,31 @@ export class CourseService {
             .map((res: Response) => res.json());
     }
 
+
+    private extractCourseListItems(res: Response) {
+        let body = res.json();
+        var courseItems: CourseListItem[] = [];
+        body.forEach(function (student) {
+            let s = new CourseListItem(student);
+            courseItems.push(s);
+        });
+        return courseItems;
+    }
+    
+    getCoursesList(): Observable<CourseListItem[]> {
+        return this.service.get(this.courseUrl)
+            .map((res:Response) => this.extractCourseListItems(res))
+    }
     updateStudent(course: Course): Observable<Response> {
     //updateStudent(student: Student): Observable<Student> {
         let url = `${this.courseUrl}/update/${course.id}`;
         return this.service.put(url, course);
     }
 
-    createStudent(course: Course): Observable<Response> {
+    createCourse(course: Course): Observable<Response> {
        let url = `${this.courseUrl}/create`;
 
         return this.service.post(url, course);
     }
+    
 }

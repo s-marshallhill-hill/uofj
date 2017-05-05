@@ -30,6 +30,16 @@ export class Student {
 
 }
 
+export class StudentListItem {
+    value: number;
+    title: string;
+
+    constructor(student: Student) {
+        this.value = student.id;
+        this.title = `${student.first} ${student.last}`;
+    }
+}
+
 
 @Injectable()
 export class StudentService {
@@ -280,6 +290,22 @@ export class StudentService {
     getStudents(): Observable<Student[]> {
         return this.service.get(this.studentsUrl)
             .map((res: Response) => res.json());
+    }
+
+    private extractStudentListItems(res: Response) {
+        let body = res.json();
+        var studentItems: StudentListItem[] = [];
+        body.forEach(function (student) {
+            let s = new StudentListItem(student);
+            studentItems.push(s);
+        });
+        console.log(studentItems);
+        return studentItems;
+    }
+    
+    getStudentsList(): Observable<StudentListItem[]> {
+        return this.service.get(this.studentsUrl)
+            .map((res:Response) => this.extractStudentListItems(res))
     }
 
     updateStudent(student: Student): Observable<Response> {

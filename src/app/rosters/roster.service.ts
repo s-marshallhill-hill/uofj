@@ -8,10 +8,9 @@ import 'rxjs/add/operator/catch';
 
 export interface Roster {
     id: number;
-    course: string;
-    studentName: string;
-    gradeYear: number;
-    grade: string;
+    courseId: string;
+    studentId: string;
+    gradeId: string;
 }
 
 @Injectable()
@@ -32,9 +31,20 @@ export class RosterService {
             .map((res: Response) => res.json())
     }
 
-    saveRoster(roster: Roster): Observable<Response> {
+    updateRoster(roster: Roster): Observable<Response> {
+        //updateStudent(student: Student): Observable<Student> {
         let url = `${this.rosterUrl}/${roster.id}`;
         return this.service.put(url, roster);
     }
 
+    createRoster(roster: Roster): Observable<any> {
+        return this.service.post(this.rosterUrl, roster)
+        .map(res => res.json() );
+    }
+
+    deleteRoster(roster: Roster): Observable<Response> {
+        let url = `${this.rosterUrl}/${roster.id}`;
+
+        return this.service.delete(url);
+    }
 }
