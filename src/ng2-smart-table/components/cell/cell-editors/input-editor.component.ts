@@ -6,7 +6,8 @@ import { DefaultEditor } from './default-editor';
   selector: 'input-editor',
   styleUrls: ['./editor.component.scss'],
   template: `
-    <input [ngClass]="inputClass"
+  <md-input-container>
+    <input mdInput [ngClass]="inputClass"
            class="form-control"
            [(ngModel)]="cell.newValue"
            [name]="cell.getId()"
@@ -15,6 +16,8 @@ import { DefaultEditor } from './default-editor';
            (click)="onClick.emit($event)"
            (keydown.enter)="onEdited.emit($event)"
            (keydown.esc)="onStopEditing.emit()">
+  </md-input-container>
+           
     `,
 })
 export class InputEditorComponent extends DefaultEditor {

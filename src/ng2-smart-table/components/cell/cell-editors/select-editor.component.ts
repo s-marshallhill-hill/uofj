@@ -5,19 +5,20 @@ import { DefaultEditor } from './default-editor';
 @Component({
   selector: 'select-editor',
   template: `
-    <select [ngClass]="inputClass"
-            class="form-control"
+    <md-select 
             [(ngModel)]="cell.newValue"
             [name]="cell.getId()"
             [disabled]="!cell.isEditable()"
             (click)="onClick.emit($event)"
             (keydown.enter)="onEdited.emit($event)"
-            (keydown.esc)="onStopEditing.emit()">
+            (keydown.esc)="onStopEditing.emit()"
+            [placeholder]="cell.getTitle()"
+            style="margin-top:15px">
 
-        <option *ngFor="let option of cell.getColumn().getConfig()?.list" [value]="option.value"
-                [selected]="option.value === cell.getValue()">{{ option.title }}
-        </option>
-    </select>
+        <md-option *ngFor="let option of cell.getColumn().getConfig()?.list" [value]="option.value"
+                >{{ option.title }}
+        </md-option>
+    </md-select>
     `,
 })
 export class SelectEditorComponent extends DefaultEditor {
