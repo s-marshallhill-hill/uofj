@@ -43,21 +43,25 @@ export class CourseService {
         });
         return courseItems;
     }
-    
+
     getCoursesList(): Observable<CourseListItem[]> {
         return this.service.get(this.courseUrl)
-            .map((res:Response) => this.extractCourseListItems(res))
+            .map((res: Response) => this.extractCourseListItems(res))
     }
-    updateStudent(course: Course): Observable<Response> {
-    //updateStudent(student: Student): Observable<Student> {
+    updateCourse(course: Course): Observable<Response> {
+        //updateStudent(student: Student): Observable<Student> {
         let url = `${this.courseUrl}/update/${course.id}`;
         return this.service.put(url, course);
     }
 
     createCourse(course: Course): Observable<Response> {
-       let url = `${this.courseUrl}/create`;
+        let url = `${this.courseUrl}/Create`;
 
         return this.service.post(url, course);
     }
-    
+    deleteCourse(course: Course): Observable<Response> {
+        let url = `${this.courseUrl}/${course.id}`;
+
+        return this.service.delete(url);
+    }
 }

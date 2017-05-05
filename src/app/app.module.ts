@@ -52,6 +52,7 @@ import { InputEditorComponent } from './shared/components/data-table-editor/inpu
 import { EditComponentComponent } from './shared/components/data-table-editor/edit-component/edit-component.component';
 import { RosterTable2Component } from './rosters/roster-table2/roster-table2.component';
 import { ListViewRendererComponent } from './shared/components/list-view-renderer/list-view-renderer.component';
+import { CourseTableComponent } from './courses/course-table/course-table.component';
 
 
 @NgModule({
@@ -86,6 +87,7 @@ import { ListViewRendererComponent } from './shared/components/list-view-rendere
         InputEditorComponent,
         EditComponentComponent,
         RosterTable2Component,
+        CourseTableComponent,
     ],
     imports: [
         NgbModule.forRoot(),

@@ -155,6 +155,7 @@ export class RosterTable2Component implements OnInit {
       roster = res;
       event.confirm.resolve(roster);
       console.log(roster);
+      this.rosters.add(roster);
     
   });
 

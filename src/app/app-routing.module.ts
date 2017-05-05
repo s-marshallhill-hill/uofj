@@ -7,6 +7,7 @@ import { StudentFormComponent } from './students/student-form/student-form.compo
 import { StudentTemplateFormComponent } from './students/student-template-form/student-template-form.component';
 import { RosterTableComponent } from './rosters/roster-table/roster-table.component';
 import { RosterTable2Component } from './rosters/roster-table2/roster-table2.component';
+import { CourseTableComponent } from './courses/course-table/course-table.component';
 
 import { StudentTable2Component } from './students/student-table2/student-table2.component';
 import { MdComponent } from './test/md/md/md.component';
@@ -17,6 +18,11 @@ const routes: Routes = [
     {
         path: 'rosters',
         component: RosterTable2Component,
+        children: []
+    },
+    {
+        path: 'courses',
+        component: CourseTableComponent,
         children: []
     },
     {
