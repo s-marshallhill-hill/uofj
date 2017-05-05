@@ -7,6 +7,7 @@ import { MaterialModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
+import { Ng2SmartTableModule } from '../ng2-smart-table';
 
 //Components
 import { AppComponent } from './app.component';
@@ -29,7 +30,6 @@ import { DataTableComponent } from './shared/components/data-table/data-table.co
 import { DataTableColumnComponent } from './shared/components/data-table-column/data-table-column.component';
 import { DataTableEditableRowComponent } from './shared/components/data-table-editable-row/data-table-editable-row.component';
 
-import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 //Services
 import { StudentService } from "./students/student.service";
@@ -84,13 +84,13 @@ import { EditComponentComponent } from './shared/components/data-table-editor/ed
     ],
     imports: [
         NgbModule.forRoot(),
+        MaterialModule.forRoot(),        
         BrowserModule,
         FormsModule,
         ReactiveFormsModule,
         HttpModule,
         AppRoutingModule,
         Ng2SmartTableModule,
-        MaterialModule.forRoot(),
         BrowserAnimationsModule
     ],
     providers: [

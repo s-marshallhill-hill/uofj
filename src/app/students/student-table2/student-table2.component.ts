@@ -76,7 +76,7 @@ export class StudentTable2Component implements OnInit {
       inputClass: "form-control form-control-sm",
       cancelButtonContent: '<i class=\"icon material-icons md-36\" title=\"Cancel\">clear</i>',
       saveButtonContent: '<i class=\"icon material-icons md-36\" title=\"Save\">save</i>',
-      editButtonContent: '<md-icon class=\"icon material-icons md-36\" title=\"Edit\">mode_edit</md-icon>'
+      editButtonContent: '<i class=\"icon material-icons md-36\" title=\"Edit\">mode_edit</i>'
     },
     mode: 'inline',
     actions: {
